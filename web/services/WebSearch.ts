@@ -198,7 +198,7 @@ export class WebSearchService {
     const scrapePromises = scrappableUrls.map(async (url) => {
       try {
         url = url.replace(/\/$/, '');
-
+        console.log('final url', url);
         const scrapeResult = await this.firecrawlApp.scrapeUrl(url, { formats: ['markdown'] });
 
         

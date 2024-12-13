@@ -3,6 +3,12 @@ import { TextSplitter } from "./TextService";
 import { VectorService } from './VectorService';
 import type { ChatCompletion } from "openai/resources/chat/completions";
 
+/* The `const data` array contains objects with two properties: `author` and `text`. Each object
+represents a quote from either Jim Collins or Simon Sinek along with the respective author. These
+quotes are taken from various books written by Jim Collins and Simon Sinek, showcasing their
+thoughts on leadership, success, and organizational strategies. The array serves as a dataset for
+the code to process and analyze in the context of the provided query and authorship identification
+logic. */
 const data = [
     { author: 'Jim Collins', text: 'Good to Great: "Good is the enemy of great. To go from good to great requires transcending the curse of competence."' },
     { author: 'Jim Collins', text: 'Built to Last: "Clock building, not time telling. Focus on building an organization that can prosper far beyond the presence of any single leader and through multiple product life cycles."' },

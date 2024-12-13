@@ -10,18 +10,19 @@ async function processAllDocuments() {
     const results = await Promise.all([
       // Fell free to uncomment any of the following lines to see how the model behaves with different file types
 
-      fileService.process('examples/example.md'),
-      fileService.process('examples/example.pdf'),
+      // fileService.process('examples/example.md'),
+      // fileService.process('examples/example.pdf'),
       fileService.process('examples/example.docx'),
-      fileService.process('examples/example.xlsx'),
-      fileService.process('examples/example.wav'),
-      fileService.process('examples/example.png'),
-      fileService.process('examples/example.mp4'), 
+      // fileService.process('examples/example.xlsx'),
+      // fileService.process('examples/example.wav'),
+      // fileService.process('examples/example.png'),
+      // fileService.process('examples/example.mp4'), 
+
 
       // notion 
 
       
-      fileService.process('https://brain.overment.com/')
+      // fileService.process('https://brain.overment.com/')
     ]);
 
 

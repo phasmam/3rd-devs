@@ -393,6 +393,8 @@ export class FileService {
       );
       await this.downloadAsPdf(fileId, pdfPath, mimeType);
 
+      console.log("intermediateFilePath", intermediateFilePath);
+
       let markdown: string;
       if (ext.includes("xl")) {
         const csvContent = await fs.readFile(intermediateFilePath, "utf-8");
@@ -451,7 +453,7 @@ export class FileService {
    */
   private async checkExternalTool(toolName: string): Promise<void> {
     try {
-      await execAsync(`which ${toolName}`);
+      await execAsync(`${toolName}`);
     } catch {
       throw new Error(`${toolName} is not installed or not in PATH`);
     }
@@ -464,7 +466,7 @@ export class FileService {
    * @returns The Markdown content as a string.
    */
   private async readPdfFile(filePath: string): Promise<string> {
-    await this.checkExternalTool("pdftohtml");
+  //  await this.checkExternalTool("pdftohtml");
 
     const tempHtmlPath = `${filePath}.html`;
     const tempFiles: string[] = [tempHtmlPath];
@@ -706,7 +708,9 @@ export class FileService {
       const pageCount = await this.getPageCount(pdfPath);
 
       for (let i = 1; i <= pageCount; i++) {
+        console.log(`Processing page ${i} of ${pageCount}`);
         const result = await storeAsImage(i);
+        console.log(`Result: ${result}`);
         const outputPath = join(
           this.TEMP_DIR,
           `${outputBaseName}_${i}.jpg`
@@ -757,11 +761,12 @@ export class FileService {
    * @returns The number of pages in the PDF.
    */
   private async getPageCount(pdfPath: string): Promise<number> {
-    await this.checkExternalTool("pdfinfo");
-
     try {
+      const isWindows = process.platform === 'win32';
       const { stdout } = await execAsync(
-        `pdfinfo "${pdfPath}" | grep Pages:`
+        isWindows
+          ? `pdfinfo.exe "${pdfPath}" | findstr "Pages:"` 
+          : `pdfinfo "${pdfPath}" | grep Pages:`
       );
       return parseInt(stdout.split(":")[1].trim(), 10);
     } catch (error: any) {

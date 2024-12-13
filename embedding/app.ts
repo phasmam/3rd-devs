@@ -3,15 +3,26 @@ import { TextSplitter } from "./TextService";
 import { VectorService } from './VectorService';
 
 const data = [
-  'Apple (Consumer Electronics)',
-  'Tesla (Automotive)',
-  'Microsoft (Software)',
-  'Google (Internet Services)',
-  'Nvidia (Semiconductors)',
-  'Meta (Social Media)',
-  'X Corp (Social Media)',
-  'Tech•sistence (Newsletter)'
+  'Apple',
+  'Tesla',
+  'Microsoft',
+  'Google',
+  'Nvidia',
+  'Meta',
+  'X Corp',
+  'Tech•sistence'
 ];
+
+// const data = [
+//     'Apple (Consumer Electronics)',
+//     'Tesla (Automotive)',
+//     'Microsoft (Software)',
+//     'Google (Internet Services)',
+//     'Nvidia (Semiconductors)',
+//     'Meta (Social Media)',
+//     'X Corp (Social Media)',
+//     'Tech•sistence (Newsletter)'
+//   ];
 const queries = [ 'Car company', 'Macbooks', 'Facebook', 'Newsletter' ];
 
 
