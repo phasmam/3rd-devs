@@ -4,6 +4,7 @@ import { Agent } from "./AgentService";
 import type { State } from "./types/agent";
 import type { ChatCompletion, ChatCompletionMessageParam } from "openai/resources/chat/completions";
 import { instruction as webInstruction } from "./prompts/web/web";
+import fs from 'fs';
 
 const app = express();
 const port = 3000;
@@ -69,5 +70,7 @@ app.post("/api/chat", async (req, res) => {
   // Generate the answer
   const answer = await agent.generateAnswer() as ChatCompletion;
   state.messages = [...state.messages, answer.choices[0].message];
+  //save to file state as formated json, filename is conversation_uuid
+  fs.writeFileSync(`agent/${conversation_uuid}.json`, JSON.stringify(state, null, 2));
   return res.json(answer);
 });

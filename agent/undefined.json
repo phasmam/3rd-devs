@@ -1,0 +1,48 @@
+{
+  "config": {
+    "max_steps": 10,
+    "current_step": 1,
+    "active_step": {
+      "name": "web_search",
+      "query": "Latest information about Michał Duchnowski"
+    }
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "Podaj najnowsze informacje o Michale Duchnowskim"
+    },
+    {
+      "role": "assistant",
+      "content": "Przepraszam, ale nie posiadam żadnych informacji o Michale Duchnowskim.",
+      "refusal": null
+    }
+  ],
+  "tools": [
+    {
+      "uuid": "804c08e5-c637-4c8c-81b1-2d2361ad0100",
+      "name": "web_search",
+      "description": "Use this to search the web for external information",
+      "instruction": "Generate a concise, self-contained web search query that precisely targets the requested information or resource.\n\n<rules>\n- You're forbidden to guess the URLs and use any URL that wasn't provided by the user explicitly\n- Convert user requests into direct, actionable queries\n- Focus on the specific information or resource mentioned\n- Use the format \"Find [specific item] on [domain]\" when a domain is provided\n- Eliminate unnecessary words; keep only essential search terms\n- Ensure the query can stand alone as a complete search instruction\n- When the URL is provided, include it in the query\n- When the user asks for specific page/subpage content, include it in the query (such as 'home page')\n</rules>\n\n<examples>\nUser: List me hardware from nvidia.com\nAI: Find hardware on nvidia.com\n\nUser: What's the latest iPhone model?\nAI: Latest iPhone model\n\nUser: Show me recipes for vegan lasagna\nAI: Vegan lasagna recipes\n\nUser: Find research papers about quantum computing on arxiv.org\nAI: Find quantum computing research papers on arxiv.org\n</examples>",
+      "parameters": "{\"query\":\"Command to the web search tool, including the search query and all important details, keywords and urls from the avilable context\"}"
+    },
+    {
+      "uuid": "94b2fc74-30f4-4f39-aca3-1b452bb17f34",
+      "name": "final_answer",
+      "description": "Use this tool to write a message to the user",
+      "instruction": "...",
+      "parameters": "{}"
+    }
+  ],
+  "documents": [],
+  "actions": [
+    {
+      "uuid": "6318af4e-b326-4c4f-8db2-a38f959798bf",
+      "name": "web_search",
+      "parameters": "{\"query\":\"Michał Duchnowski latest news December 2024\"}",
+      "description": "Search results & website contents for the query Michał Duchnowski latest news December 2024",
+      "results": [],
+      "tool_uuid": "web_search"
+    }
+  ]
+}
